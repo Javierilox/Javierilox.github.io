@@ -48,13 +48,43 @@
 
 ---
 
+## 🚀 Proyectos Destacados
+
+### 📅 [Sistema de Horarios - Demo Visual](https://github.com/Javierilox/Proyecto_Horario-Demo-Visual)
+Interfaz gráfica diseñada para la visualización y administración de bloques de tiempo. Este proyecto demuestra la capacidad para estructurar lógicas de programación de turnos y llevarlas a una interfaz de usuario clara e intuitiva.
+* **Tecnologías:** ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+* **[🔗 Ver Código del Proyecto](https://github.com/Javierilox/Proyecto_Horario-Demo-Visual)**
+
+### 💬 [Diseño UI - Clon de Discord](https://github.com/Javierilox/Dise-o-UI-Discord)
+Proyecto de maquetación Frontend centrado en replicar la compleja interfaz de usuario de Discord. Destaca el manejo avanzado de estilos, responsividad y estructuración de componentes visuales modernos.
+* **Tecnologías:** ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+* **[🔗 Ver Código del Proyecto](https://github.com/Javierilox/Dise-o-UI-Discord)**
+
+### ⚙️ [Sistema CRUD en PHP](https://github.com/Javierilox/Crud-en-PhP)
+Aplicación Backend funcional que implementa las operaciones básicas de gestión de datos (Crear, Leer, Actualizar, Eliminar). Muestra una integración sólida entre la lógica del servidor y la persistencia en bases de datos relacionales.
+* **Tecnologías:** ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+* **[🔗 Ver Código del Proyecto](https://github.com/Javierilox/Crud-en-PhP)**
+
+### 📊 [Dashboard de Gestión en Power BI](https://github.com/Javierilox/Dashboard_PowerBI)
+Panel interactivo de Inteligencia de Negocios construido para visualizar métricas clave y facilitar el control de gestión. Refleja la capacidad para transformar datos crudos en información estratégica para la toma de decisiones.
+* **Tecnologías:** ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+* **[🔗 Ver Proyecto](https://github.com/Javierilox/Dashboard_PowerBI)**
+
+### 👾 [Game Galaga Arcade](https://github.com/Javierilox/Game-Galaga)
+Recreación del clásico videojuego de naves. Este proyecto pone a prueba la lógica de programación orientada a objetos, el manejo de eventos en tiempo real, detección de colisiones y renderizado de gráficos.
+* **Tecnologías:** ![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white) / ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+* **[🔗 Ver Código del Proyecto](https://github.com/Javierilox/Game-Galaga)**
+
+---
+
 ## 📊 Estadísticas GitHub
 
 ![Javier's GitHub stats](https://github-readme-stats-fast.vercel.app/api?username=Javierilox&show_icons=true&theme=default)  
 ![Top Langs](https://github-readme-stats-fast.vercel.app/api/top-langs/?username=Javierilox&layout=compact)
+
 ---
 
 ## 📫 Contacto
 
 - 📧 Email: javier.orellana2001@gmail.com  
-- 💼 LinkedIn: [linkedin.com/in/javier-ignacio-orellana-santander](https://www.linkedin.com/in/javier-ignacio-orell
+- 💼 LinkedIn: [linkedin.com/in/javier-ignacio-orellana-santander](https://www.linkedin.com/in/javier-ignacio-orellana-santander)
