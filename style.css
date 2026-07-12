@@ -1,0 +1,112 @@
+/* --- Variables de Color (Minimalismo) --- */
+:root {
+    --bg-color: #fafafa;
+    --text-main: #171717;
+    --text-muted: #666666;
+    --accent-color: #000000;
+    --card-bg: #ffffff;
+    --border-radius: 8px;
+}
+
+/* --- Reseteo Básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Sección Hero (Encabezado) --- */
+.hero {
+    padding: 100px 0 60px;
+    text-align: left;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    margin-bottom: 10px;
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+/* --- Proyectos --- */
+.projects {
+    padding: 40px 0;
+}
+
+.projects h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 10px;
+}
+
+/* Tarjetas Modernas */
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    border: 1px solid #eaeaea;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+/* --- Botones / Enlaces --- */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    color: var(--card-bg);
+    background-color: var(--accent-color);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* --- Pie de página --- */
+footer {
+    padding: 60px 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
