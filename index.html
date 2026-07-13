@@ -1,197 +1,159 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javier Orellana | Portafolio</title>
-    <!-- Tipografía Google Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Enlace al CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        darkBg: '#0f0f11',
+                        lightBg: '#f4f4f6'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Textura de ruido de fondo */
+        .noise-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        /* Tipografía con contorno hueco (Como en la imagen) */
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 2px currentColor;
+        }
+
+        /* Animación de las formas de colores (Blobs) */
+        @keyframes float {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+            opacity: 0.6;
+            z-index: 0;
+        }
+        .dark .blob { opacity: 0.4; }
+    </style>
 </head>
-<body>
+<body class="bg-lightBg text-gray-900 dark:bg-darkBg dark:text-gray-100 transition-colors duration-500 overflow-hidden relative">
 
-    <!-- SECCIÓN HERO (Presentación y Foto) -->
-    <header class="hero section">
-        <div class="container hero-content">
-            <div class="hero-image-container">
-                <img src="foto_perfil.png" alt="Javier Orellana Santander" class="profile-img">
-            </div>
-            <div class="hero-text">
-                <h1>👋 ¡Hola! Soy <span class="highlight">Javier Orellana Santander</span></h1>
-                <p class="subtitle">🎓 <strong>Ingeniero en Informática</strong> titulado de DUOC UC, apasionado por la automatización, la mejora continua y la creación de soluciones eficientes. Actualmente me encuentro expandiendo mis habilidades de desarrollo en la academia <strong>Desafío Latam</strong>.</p>
-                <div class="hero-buttons">
-                    <a href="mailto:javier.orellana2001@gmail.com" class="btn btn-primary">Contáctame</a>
-                    <a href="https://www.linkedin.com/in/javier-ignacio-orellana-santander" target="_blank" class="btn btn-secondary">LinkedIn</a>
-                </div>
-            </div>
+    <div class="noise-bg"></div>
+
+    <div class="blob bg-gradient-to-r from-pink-300 to-purple-300 dark:from-purple-600 dark:to-indigo-600 w-96 h-96 top-[-10%] left-[-10%] animation-delay-2000"></div>
+    <div class="blob bg-gradient-to-r from-cyan-300 to-emerald-200 dark:from-cyan-700 dark:to-teal-500 w-[500px] h-[500px] bottom-[-20%] right-[-10%]"></div>
+    <div class="blob bg-gradient-to-r from-yellow-200 to-orange-200 dark:from-orange-700 dark:to-rose-600 w-80 h-80 top-[20%] left-[40%] animation-delay-4000"></div>
+
+    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-40 backdrop-blur-sm bg-white/10 dark:bg-black/10 border-b border-gray-200/20 dark:border-white/10">
+        <a href="#" class="font-black text-2xl tracking-tighter">JO<span class="text-emerald-500">.</span></a>
+
+        <div class="flex items-center gap-6 font-medium text-sm">
+            <button class="hover:text-emerald-500 transition-colors">EN</button>
+            
+            <button id="themeToggle" class="hover:text-emerald-500 transition-colors">
+                <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            </button>
+
+            <button id="menuToggle" class="hover:text-emerald-500 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
         </div>
-    </header>
+    </nav>
 
-    <!-- SECCIÓN SOBRE MÍ -->
-    <section class="about section bg-light">
-        <div class="container">
-            <h2 class="section-title">🧑‍💻 Sobre Mí</h2>
-            <div class="about-grid">
-                <div class="about-item">
-                    <strong>¿Quién soy?</strong>
-                    <p>Un profesional de la informática enfocado en optimizar procesos a través del código.</p>
-                </div>
-                <div class="about-item">
-                    <strong>¿De dónde soy?</strong>
-                    <p>Santiago, Chile.</p>
-                </div>
-                <div class="about-item">
-                    <strong>¿A qué me dedico?</strong>
-                    <p>Desarrollo de sistemas, administración de bases de datos y automatización de procesos.</p>
-                </div>
-                <div class="about-item">
-                    <strong>¿Por qué deberían contactarme?</strong>
-                    <p>Cuento con un background sólido combinando el análisis TI, soporte técnico y desarrollo Full Stack. Aporto valor mediante la resolución metódica de problemas.</p>
-                </div>
-            </div>
+    <div id="fullMenu" class="fixed inset-0 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl z-30 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <ul class="text-4xl md:text-6xl font-bold text-center space-y-8 tracking-tight">
+            <li><a href="#" class="hover:text-emerald-500 transition-colors">Inicio</a></li>
+            <li><a href="proyectos.html" class="hover:text-emerald-500 transition-colors">Proyectos</a></li>
+            <li><a href="sobre-mi.html" class="hover:text-emerald-500 transition-colors">Sobre Mí</a></li>
+            <li><a href="mailto:javier.orellana2001@gmail.com" class="hover:text-emerald-500 transition-colors text-2xl text-gray-500 mt-8 block">javier.orellana2001@gmail.com</a></li>
+        </ul>
+    </div>
+
+    <main class="relative z-10 flex flex-col items-center justify-center h-screen px-4 text-center">
+        
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none mb-4">
+            Hola, soy <br class="md:hidden">
+            Javier <span class="text-outline text-gray-900 dark:text-white">Orellana</span>
+        </h1>
+        
+        <p class="text-sm md:text-lg text-gray-600 dark:text-gray-400 font-medium max-w-2xl mb-8">
+            Ingeniero en Informática, desarrollador web , especialista en Análisis & automatización de datos.
+        </p>
+
+        <div class="flex flex-col md:flex-row items-center gap-6 font-medium text-sm md:text-base">
+            <a href="proyectos.html" class="group flex items-center gap-2 hover:text-emerald-500 transition-colors">
+                <span class="opacity-50 group-hover:opacity-100 transition-opacity">→</span> Ver mis proyectos
+            </a>
+            
+            <a href="sobre-mi.html" class="group flex items-center gap-2 hover:text-emerald-500 transition-colors">
+                <span class="opacity-50 group-hover:opacity-100 transition-opacity">→</span> Saber más de mí
+            </a>
+
+            <a href="cv.pdf" download class="group flex items-center gap-2 bg-gray-900 text-white dark:bg-white dark:text-black px-6 py-2 rounded-full hover:bg-emerald-500 dark:hover:bg-emerald-500 hover:text-white transition-all shadow-lg hover:shadow-emerald-500/25">
+                Descargar CV
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            </a>
         </div>
-    </section>
+    </main>
 
-    <!-- SECCIÓN TECNOLOGÍAS -->
-    <section class="skills section">
-        <div class="container">
-            <h2 class="section-title">🛠️ Tecnologías y Herramientas</h2>
-            <div class="skills-grid">
-                
-                <div class="skill-category">
-                    <h3>💻 Lenguajes</h3>
-                    <div class="badges">
-                        <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-                        <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" alt="Java">
-                        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
-                        <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
-                        <img src="https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white" alt="SQL">
-                    </div>
-                </div>
+    <script>
+        // Lógica Modo Noche / Día
+        const htmlElement = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
 
-                <div class="skill-category">
-                    <h3>🌐 Frontend & Frameworks</h3>
-                    <div class="badges">
-                        <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
-                        <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
-                        <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
-                        <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django">
-                    </div>
-                </div>
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            } else {
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            }
+        });
 
-                <div class="skill-category">
-                    <h3>🗄️ Bases de Datos</h3>
-                    <div class="badges">
-                        <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
-                        <img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white" alt="Oracle">
-                        <img src="https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" alt="SQL Server">
-                        <img src="https://img.shields.io/badge/BigQuery-669DF6?style=for-the-badge&logo=googlecloud&logoColor=white" alt="BigQuery">
-                    </div>
-                </div>
+        // Lógica Menú Desplegable
+        const menuToggle = document.getElementById('menuToggle');
+        const fullMenu = document.getElementById('fullMenu');
+        let menuOpen = false;
 
-                <div class="skill-category">
-                    <h3>☁️ DevOps, APIs & Datos</h3>
-                    <div class="badges">
-                        <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
-                        <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
-                        <img src="https://img.shields.io/badge/OpenAPI-6BA539?style=for-the-badge&logo=openapiinitiative&logoColor=white" alt="OpenAPI">
-                        <img src="https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black" alt="Power BI">
-                        <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN PROYECTOS -->
-    <section class="projects section bg-light">
-        <div class="container">
-            <h2 class="section-title">🚀 Proyectos Destacados</h2>
-            <div class="projects-grid">
-                
-                <div class="card">
-                    <h3>📅 Sistema de Horarios - Demo Visual</h3>
-                    <p>Interfaz gráfica diseñada para la visualización y administración de bloques de tiempo. Demuestra la capacidad para estructurar lógicas de turnos.</p>
-                    <div class="badges-small">
-                        <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
-                        <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
-                        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS">
-                    </div>
-                    <a href="https://github.com/Javierilox/Proyecto_Horario-Demo-Visual" target="_blank" class="btn btn-outline">Ver Código</a>
-                </div>
-
-                <div class="card">
-                    <h3>💬 Diseño UI - Clon de Discord</h3>
-                    <p>Proyecto de maquetación Frontend centrado en replicar la compleja interfaz de usuario de Discord. Manejo avanzado de estilos y responsividad.</p>
-                    <div class="badges-small">
-                        <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
-                        <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
-                        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS">
-                    </div>
-                    <a href="https://github.com/Javierilox/Dise-o-UI-Discord" target="_blank" class="btn btn-outline">Ver Código</a>
-                </div>
-
-                <div class="card">
-                    <h3>⚙️ Sistema CRUD en PHP</h3>
-                    <p>Aplicación Backend funcional que implementa operaciones de gestión de datos. Integración sólida entre la lógica del servidor y la base de datos.</p>
-                    <div class="badges-small">
-                        <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP">
-                        <img src="https://img.shields.io/badge/MySQL-005C84?style=flat-square&logo=mysql&logoColor=white" alt="MySQL">
-                    </div>
-                    <a href="https://github.com/Javierilox/Crud-en-PhP" target="_blank" class="btn btn-outline">Ver Código</a>
-                </div>
-
-                <div class="card">
-                    <h3>📊 Dashboard en Power BI</h3>
-                    <p>Panel interactivo de Inteligencia de Negocios construido para visualizar métricas clave. Transforma datos crudos en información estratégica.</p>
-                    <div class="badges-small">
-                        <img src="https://img.shields.io/badge/Power%20BI-F2C811?style=flat-square&logo=powerbi&logoColor=black" alt="Power BI">
-                    </div>
-                    <a href="https://github.com/Javierilox/Dashboard_PowerBI" target="_blank" class="btn btn-outline">Ver Proyecto</a>
-                </div>
-
-                <div class="card">
-                    <h3>👾 Game Galaga Arcade</h3>
-                    <p>Recreación del clásico videojuego. Pone a prueba la lógica orientada a objetos, eventos en tiempo real, colisiones y renderizado gráfico.</p>
-                    <div class="badges-small">
-                        <img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=java&logoColor=white" alt="Java">
-                        <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JS">
-                    </div>
-                    <a href="https://github.com/Javierilox/Game-Galaga" target="_blank" class="btn btn-outline">Ver Código</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN ESTADÍSTICAS -->
-    <section class="stats section">
-        <div class="container">
-            <h2 class="section-title text-center">📊 Estadísticas GitHub</h2>
-            <div class="stats-container">
-                <img src="https://github-readme-stats-fast.vercel.app/api?username=Javierilox&show_icons=true&theme=transparent&hide_border=true&title_color=171717&text_color=666666&icon_color=000000" alt="GitHub Stats">
-                <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=Javierilox&layout=compact&theme=transparent&hide_border=true&title_color=171717&text_color=666666" alt="Top Langs">
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <h3>📫 Contáctame</h3>
-            <p>¿Tienes un proyecto en mente o buscas un perfil técnico? Hablemos.</p>
-            <div class="footer-links">
-                <a href="mailto:javier.orellana2001@gmail.com">javier.orellana2001@gmail.com</a>
-                <a href="https://www.linkedin.com/in/javier-ignacio-orellana-santander" target="_blank">LinkedIn</a>
-                <a href="https://github.com/Javierilox" target="_blank">GitHub</a>
-            </div>
-            <p class="copyright">© 2026 Javier Orellana. Diseñado y desarrollado con dedicación.</p>
-        </div>
-    </footer>
-
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                fullMenu.classList.remove('opacity-0', 'pointer-events-none');
+                fullMenu.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                fullMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                fullMenu.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+    </script>
 </body>
 </html>

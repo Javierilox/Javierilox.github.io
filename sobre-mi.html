@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javier Orellana | Sobre Mí</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        darkBg: '#0f0f11',
+                        lightBg: '#f4f4f6'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ==========================================================================
+           EFECTOS VISUALES BASE
+           ========================================================================== */
+        .noise-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 50; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .tech-grid {
+            background-size: 40px 40px;
+            background-image: radial-gradient(circle, rgba(100, 116, 139, 0.2) 1px, transparent 1px);
+        }
+
+        /* ==========================================================================
+           ANIMACIÓN DE LOGOS (10 tiempos distintos)
+           ========================================================================== */
+        @keyframes floatBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .tech-icon {
+            animation: floatBounce 4s infinite ease-in-out;
+            transition: all 0.3s ease;
+        }
+        .tech-icon:nth-child(1) { animation-delay: 0.0s; }
+        .tech-icon:nth-child(2) { animation-delay: 0.3s; }
+        .tech-icon:nth-child(3) { animation-delay: 0.6s; }
+        .tech-icon:nth-child(4) { animation-delay: 0.9s; }
+        .tech-icon:nth-child(5) { animation-delay: 1.2s; }
+        .tech-icon:nth-child(6) { animation-delay: 1.5s; }
+        .tech-icon:nth-child(7) { animation-delay: 1.8s; }
+        .tech-icon:nth-child(8) { animation-delay: 2.1s; }
+        .tech-icon:nth-child(9) { animation-delay: 2.4s; }
+        .tech-icon:nth-child(10) { animation-delay: 2.7s; }
+
+        .tech-icon:hover {
+            transform: scale(1.2) translateY(-20px) !important;
+            filter: drop-shadow(0 10px 15px rgba(16, 185, 129, 0.4));
+            animation-play-state: paused;
+        }
+
+        /* ==========================================================================
+           FONDO HOBBIES
+           ========================================================================== */
+        #dynamic-bg {
+            position: fixed; inset: 0; z-index: -1;
+            background-size: cover; background-position: center;
+            transition: background-image 0.8s ease-in-out;
+        }
+        .bg-overlay {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0.4); 
+            backdrop-filter: blur(3px);  
+        }
+        
+        .text-shadow-strong {
+            text-shadow: 0 4px 8px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="bg-lightBg text-gray-900 dark:bg-darkBg dark:text-gray-100 transition-colors duration-500 min-h-screen relative overflow-x-hidden">
+
+    <div class="noise-bg"></div>
+
+    <div id="dynamic-bg" style="background-image: url(''); opacity: 0;">
+        <div class="bg-overlay"></div>
+    </div>
+
+    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-40 backdrop-blur-sm bg-white/10 dark:bg-black/10 border-b border-gray-200/20 dark:border-white/10">
+        <a href="index.html" class="font-black text-2xl tracking-tighter">JO<span class="text-emerald-500">.</span></a>
+        <div class="flex items-center gap-6 font-medium text-sm">
+            <button class="hover:text-emerald-500 transition-colors">EN</button>
+            <button id="themeToggle" class="hover:text-emerald-500 transition-colors">
+                <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            </button>
+            <button id="menuToggle" class="hover:text-emerald-500 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="fullMenu" class="fixed inset-0 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl z-30 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <ul class="text-4xl md:text-6xl font-bold text-center space-y-8 tracking-tight">
+            <li><a href="index.html" class="hover:text-emerald-500 transition-colors">Inicio</a></li>
+            <li><a href="proyectos.html" class="hover:text-emerald-500 transition-colors">Proyectos</a></li>
+            <li><a href="sobre-mi.html" class="text-emerald-500">Sobre Mí</a></li>
+            <li><a href="mailto:javier.orellana2001@gmail.com" class="hover:text-emerald-500 transition-colors text-2xl text-gray-500 mt-8 block">javier.orellana2001@gmail.com</a></li>
+        </ul>
+    </div>
+
+    <div class="fixed top-24 left-1/2 -translate-x-1/2 z-20 bg-white/50 dark:bg-black/50 backdrop-blur-md p-1 rounded-full border border-gray-200 dark:border-white/10 flex gap-1 shadow-xl">
+        <button id="btn-profesional" class="px-6 py-2 rounded-full text-sm font-bold bg-emerald-500 text-white transition-all shadow-md">Profesional</button>
+        <button id="btn-hobbies" class="px-6 py-2 rounded-full text-sm font-bold text-gray-600 dark:text-gray-400 hover:text-emerald-500 transition-all">Hobbies</button>
+    </div>
+
+    <main class="pt-40 pb-10 px-4 max-w-7xl mx-auto relative z-10 min-h-screen flex items-center justify-center">
+
+        <section id="sec-profesional" class="w-full transition-opacity duration-500 relative">
+            <div class="absolute inset-0 tech-grid -z-10 opacity-50 dark:opacity-20 pointer-events-none"></div>
+
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 w-full">
+                
+                <div class="lg:w-1/2 flex justify-center lg:justify-end items-end h-full">
+                    <img src="foto-perfil-sin_fondo.png" alt="Javier Orellana" class="max-h-[60vh] lg:max-h-[75vh] w-auto object-contain drop-shadow-2xl transition-transform duration-700 hover:scale-[1.03]">
+                </div>
+
+                <div class="lg:w-1/2 flex flex-col justify-center text-left">
+                    <h1 class="text-5xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6">
+                        Ingeniero en <br> <span class="text-emerald-500">Código & Datos</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-4 leading-relaxed max-w-2xl">
+                        Titulado de DUOC UC. Me especializo en actuar como el puente entre la operación cruda de un negocio y la arquitectura tecnológica. 
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mb-10">
+                        No solo escribo código; analizo flujos de trabajo, automatizo tareas repetitivas y diseño bases de datos robustas para que las empresas tomen mejores decisiones.
+                    </p>
+
+                    <div class="flex flex-wrap justify-start gap-5 bg-white/5 dark:bg-black/20 p-8 rounded-[2rem] border border-gray-200 dark:border-white/10 backdrop-blur-md max-w-[42rem] shadow-lg">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" class="w-14 h-14 tech-icon drop-shadow-xl" title="CSS3">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" class="w-14 h-14 tech-icon drop-shadow-xl" title="Tailwind CSS">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-14 h-14 tech-icon drop-shadow-xl" title="JavaScript">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript" class="w-14 h-14 tech-icon drop-shadow-xl" title="TypeScript">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" class="w-14 h-14 tech-icon drop-shadow-xl" title="PHP">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" class="w-14 h-14 tech-icon drop-shadow-xl" title="Python">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" alt="Django" class="w-14 h-14 tech-icon drop-shadow-xl bg-white/80 p-1 rounded-md" title="Django">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" alt="MySQL" class="w-14 h-14 tech-icon drop-shadow-xl bg-white/80 p-1 rounded-md" title="MySQL">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" class="w-14 h-14 tech-icon drop-shadow-xl" title="SQL Server">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" class="w-14 h-14 tech-icon drop-shadow-xl" title="Git">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec-hobbies" class="w-full hidden transition-opacity duration-500 opacity-0">
+            <div class="flex flex-col items-center justify-center text-center">
+                
+                <h2 id="hobby-title" class="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white mb-4 text-shadow-strong">
+                    Cargando...
+                </h2>
+                
+                <p id="hobby-desc" class="text-lg md:text-xl text-gray-100 max-w-2xl mb-12 font-medium text-shadow-strong">
+                    Cargando...
+                </p>
+
+                <div class="flex gap-6">
+                    <button id="btn-prev" class="w-14 h-14 rounded-full border border-white text-white flex items-center justify-center hover:bg-white hover:text-black transition-all backdrop-blur-md bg-black/30">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="btn-next" class="w-14 h-14 rounded-full border border-white text-white flex items-center justify-center hover:bg-white hover:text-black transition-all backdrop-blur-md bg-black/30">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+                
+                <div id="hobby-dots" class="flex gap-2 mt-8 drop-shadow-lg"></div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const hobbiesData = [
+            {
+                title: "Mundo Anime",
+                description: "Me gusta el anime. Disfruto de los clasicos, animes de temporada mi franquicia favorita es Gundam.",
+                backgroundUrl: "https://i.redd.it/x2pc0n0xz58g1.jpeg" 
+            },
+            {
+                title: "Gamer de Nacimiento",
+                description: "Siempre he sido fan de los juegos clásicos y modernos como galaga,Snake, bomberman pasando por juegos mas actuales Marvel Spiderman, Assassins Creed , entre otros.  Me llama mucho la atencion cómo se programaban esos juegos clasicos de antes unas verdaderas joyas con recursos tan limitados es fascinante.",
+                backgroundUrl: "https://images7.alphacoders.com/510/thumb-1920-510000.jpg" 
+            },
+            {
+                title: "Música & Bandas",
+                description: "La música es mi combustible diario. Me ayuda a distraerme y bajar el estres cuando estoy diseñando una solución o programando durante horas, no tengo un genero favorito suelo escuchar de todo un poco.",
+                backgroundUrl: "https://images.unsplash.com/photo-1493225457124-a1a2a5f5f9af?q=80&w=2000" 
+            },
+            {
+                title: "Lectura de Libros",
+                description: "Me encanta perderme en las páginas de un buen libro de aventuras o fantasia. Me agrada esa magia de sentir que estas en los zapatos del protagonista o acompañarlo en sus aventuras y me permite desconectar por completo de las pantallas, mis escritor favorito es Julio Verne.",
+                backgroundUrl: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2000"
+            },
+            {
+                title: "Sobre mi Perro",
+                description: "Mi fiel compañero. Salir a pasear con mi perrito Teo es mi mejor forma de salir de casa; me ayuda a recargar energías y me enseña sobre cual atento e inteligente pueden llegar a ser ademas de entregar un amor y lealtad incondicional todos los días.",
+                backgroundUrl: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=2000"
+            }
+        ];
+
+        let currentHobby = 0;
+        const dynamicBg = document.getElementById('dynamic-bg');
+        const hobbyTitle = document.getElementById('hobby-title');
+        const hobbyDesc = document.getElementById('hobby-desc');
+        const dotsContainer = document.getElementById('hobby-dots');
+
+        function renderHobby(index) {
+            const data = hobbiesData[index];
+            
+            hobbyTitle.style.opacity = 0;
+            hobbyDesc.style.opacity = 0;
+            
+            setTimeout(() => {
+                hobbyTitle.textContent = data.title;
+                hobbyDesc.textContent = data.description;
+                hobbyTitle.style.opacity = 1;
+                hobbyDesc.style.opacity = 1;
+            }, 300);
+
+            dynamicBg.style.backgroundImage = `url('${data.backgroundUrl}')`;
+
+            Array.from(dotsContainer.children).forEach((dot, i) => {
+                if(i === index) {
+                    dot.classList.add('bg-white', 'w-8');
+                    dot.classList.remove('bg-white/50', 'w-3');
+                } else {
+                    dot.classList.remove('bg-white', 'w-8');
+                    dot.classList.add('bg-white/50', 'w-3');
+                }
+            });
+        }
+
+        hobbiesData.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = `h-3 shadow-lg rounded-full transition-all duration-300 cursor-pointer ${i === 0 ? 'bg-white w-8' : 'bg-white/50 w-3'}`;
+            dot.addEventListener('click', () => { currentHobby = i; renderHobby(currentHobby); });
+            dotsContainer.appendChild(dot);
+        });
+
+        document.getElementById('btn-next').addEventListener('click', () => {
+            currentHobby = (currentHobby + 1) % hobbiesData.length;
+            renderHobby(currentHobby);
+        });
+        document.getElementById('btn-prev').addEventListener('click', () => {
+            currentHobby = (currentHobby - 1 + hobbiesData.length) % hobbiesData.length;
+            renderHobby(currentHobby);
+        });
+
+        const btnProf = document.getElementById('btn-profesional');
+        const btnHob = document.getElementById('btn-hobbies');
+        const secProf = document.getElementById('sec-profesional');
+        const secHob = document.getElementById('sec-hobbies');
+
+        btnProf.addEventListener('click', () => {
+            btnProf.className = "px-6 py-2 rounded-full text-sm font-bold bg-emerald-500 text-white transition-all shadow-md";
+            btnHob.className = "px-6 py-2 rounded-full text-sm font-bold text-gray-600 dark:text-gray-400 hover:text-emerald-500 transition-all";
+            
+            secHob.classList.add('opacity-0');
+            setTimeout(() => {
+                secHob.classList.add('hidden');
+                secProf.classList.remove('hidden');
+                setTimeout(() => secProf.classList.remove('opacity-0'), 50);
+            }, 300);
+
+            dynamicBg.style.opacity = '0';
+        });
+
+        btnHob.addEventListener('click', () => {
+            btnHob.className = "px-6 py-2 rounded-full text-sm font-bold bg-emerald-500 text-white transition-all shadow-md";
+            btnProf.className = "px-6 py-2 rounded-full text-sm font-bold text-gray-600 dark:text-gray-400 hover:text-emerald-500 transition-all";
+            
+            secProf.classList.add('opacity-0');
+            setTimeout(() => {
+                secProf.classList.add('hidden');
+                secHob.classList.remove('hidden');
+                setTimeout(() => secHob.classList.remove('opacity-0'), 50);
+                
+                renderHobby(currentHobby);
+                dynamicBg.style.opacity = '1';
+            }, 300);
+        });
+
+        const htmlElement = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            } else {
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            }
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const fullMenu = document.getElementById('fullMenu');
+        let menuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                fullMenu.classList.remove('opacity-0', 'pointer-events-none');
+                fullMenu.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                fullMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                fullMenu.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+    </script>
+</body>
+</html>
