@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javier Orellana | Proyectos</title>
+
+    <!-- Tipografía Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuración Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        darkBg: '#0f0f11',
+                        lightBg: '#f4f4f6'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .noise-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 50; opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .tech-grid {
+            background-size: 40px 40px;
+            background-image: radial-gradient(circle, rgba(100, 116, 139, 0.2) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-lightBg text-gray-900 dark:bg-darkBg dark:text-gray-100 transition-colors duration-500 min-h-screen relative overflow-x-hidden">
+
+    <div class="noise-bg"></div>
+    <div class="absolute inset-0 tech-grid -z-10 opacity-50 dark:opacity-20 pointer-events-none"></div>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-40 backdrop-blur-sm bg-white/10 dark:bg-black/10 border-b border-gray-200/20 dark:border-white/10">
+        <a href="index.html" class="font-black text-2xl tracking-tighter">JO<span class="text-emerald-500">.</span></a>
+        <div class="flex items-center gap-6 font-medium text-sm">
+            <button class="hover:text-emerald-500 transition-colors">EN</button>
+            <button id="themeToggle" class="hover:text-emerald-500 transition-colors">
+                <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            </button>
+            <button id="menuToggle" class="hover:text-emerald-500 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MENÚ DESPLEGABLE -->
+    <div id="fullMenu" class="fixed inset-0 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl z-30 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <ul class="text-4xl md:text-6xl font-bold text-center space-y-8 tracking-tight">
+            <li><a href="index.html" class="hover:text-emerald-500 transition-colors">Inicio</a></li>
+            <li><a href="proyectos.html" class="text-emerald-500">Proyectos</a></li>
+            <li><a href="sobre-mi.html" class="hover:text-emerald-500 transition-colors">Sobre Mí</a></li>
+            <li><a href="mailto:javier.orellana2001@gmail.com" class="hover:text-emerald-500 transition-colors text-2xl text-gray-500 mt-8 block">javier.orellana2001@gmail.com</a></li>
+        </ul>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL DE PROYECTOS -->
+    <main class="pt-40 pb-20 px-4 max-w-7xl mx-auto relative z-10 min-h-screen">
+        
+        <div class="text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4">
+                Mis <span class="text-emerald-500">Proyectos</span>
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 font-medium max-w-2xl mx-auto">
+                Soluciones reales desarrolladas para optimizar procesos, integrar sistemas y transformar datos en decisiones estratégicas.
+            </p>
+        </div>
+
+        <!-- GRILLA DE 6 TARJETAS CON EFECTO REVEAL -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- PROYECTO 1 -->
+            <div class="group relative h-[450px] w-full rounded-[2rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-emerald-500/20 transition-all duration-500">
+                
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA38qC0GEVZdTdUxdDd644GKtR6RmeVJEKgpgKO3NgBYb4hyp9Aj7yrIY&s=10" alt="Sistema de Turnos" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500"></div>
+                
+                <div class="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                    <h3 class="text-3xl font-bold text-white mb-2 tracking-tight">Sistema de Turnos</h3>
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            Automatización para optimizar la lógica de programación y control de flotas, gestionando asignaciones de conductores de manera eficiente.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono bg-white/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full backdrop-blur-md">Python</span>
+                            <span class="text-xs font-mono bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full backdrop-blur-md">Pandas</span>
+                        </div>
+                        <a href="https://github.com/Javierilox/Proyecto_Horario-Demo-Visual" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:text-black transition-colors w-max">
+                            Ver Código <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYECTO 2 -->
+            <div class="group relative h-[450px] w-full rounded-[2rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-emerald-500/20 transition-all duration-500">
+                
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ4A-BsuBofdJScBu4qG80-Na9zSLXZExceMy1NBm3rRLvqeELcdBI8Zcq&s=10" alt="UI Discord" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500"></div>
+                
+                <div class="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                    <h3 class="text-3xl font-bold text-white mb-2 tracking-tight">Diseño UI Discord</h3>
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            Clon de la interfaz de usuario de Discord. Enfocado en diseño responsivo, estilización de componentes y experiencia de usuario.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono bg-white/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full backdrop-blur-md">HTML</span>
+                            <span class="text-xs font-mono bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full backdrop-blur-md">CSS</span>
+                            <span class="text-xs font-mono bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full backdrop-blur-md">UI/UX</span>
+                        </div>
+                        <a href="https://github.com/Javierilox/Dise-o-UI-Discord" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:text-black transition-colors w-max">
+                            Ver Código <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYECTO 3 -->
+            <div class="group relative h-[450px] w-full rounded-[2rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-emerald-500/20 transition-all duration-500">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTULYZ_1ASf5D8iVkdlakyxCq2MfNvFg69dHAQP5ISJ1g&s=10" alt="Dashboard Power BI" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500"></div>
+                
+                <div class="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                    <h3 class="text-3xl font-bold text-white mb-2 tracking-tight">Dashboard BI</h3>
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            Panel interactivo de Inteligencia de Negocios para la visualización de métricas críticas y facilitación en la toma de decisiones.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono bg-white/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full backdrop-blur-md">Power BI</span>
+                            <span class="text-xs font-mono bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full backdrop-blur-md">DAX</span>
+                            <span class="text-xs font-mono bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full backdrop-blur-md">SQL</span>
+                        </div>
+                        <a href="https://github.com/Javierilox/Dashboard_PowerBI" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:text-black transition-colors w-max">
+                            Ver Código <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYECTO 4 -->
+            <div class="group relative h-[450px] w-full rounded-[2rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-emerald-500/20 transition-all duration-500">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReOX-Nl6MXVPGfx4X-HqwjI58nN-O8NomWdyRXEolgPVd4yHrBWamncWls&s=10" alt="CRUD en PHP" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500"></div>
+                
+                <div class="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                    <h3 class="text-3xl font-bold text-white mb-2 tracking-tight">Sistema CRUD PHP</h3>
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            Sistema completo para la gestión de bases de datos. Permite realizar operaciones seguras de Crear, Leer, Actualizar y Eliminar registros.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono bg-white/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full backdrop-blur-md">PHP</span>
+                            <span class="text-xs font-mono bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full backdrop-blur-md">MySQL</span>
+                            <span class="text-xs font-mono bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full backdrop-blur-md">Backend</span>
+                        </div>
+                        <a href="https://github.com/Javierilox/Crud-en-PhP" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:text-black transition-colors w-max">
+                            Ver Código <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYECTO 5 -->
+            <div class="group relative h-[450px] w-full rounded-[2rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-emerald-500/20 transition-all duration-500">
+                <img src="https://www.pngplay.com/wp-content/uploads/11/Galaga-Transparent-Free-PNG.png" alt="Juego Galaga" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500"></div>
+                
+                <div class="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                    <h3 class="text-3xl font-bold text-white mb-2 tracking-tight">Galaga Retro Game</h3>
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            Recreación del clásico juego arcade retro Galaga. Desarrollo enfocado en la aplicación de lógica de programación orientada a objetos y físicas básicas.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono bg-white/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full backdrop-blur-md">Python</span>
+                            <span class="text-xs font-mono bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full backdrop-blur-md">Game Dev</span>
+                        </div>
+                        <a href="https://github.com/Javierilox/Game-Galaga" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:text-black transition-colors w-max">
+                            Ver Código <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYECTO 6 -->
+            <div class="group relative h-[450px] w-full rounded-[2rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-emerald-500/20 transition-all duration-500">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXsrO6cnLEpDj3XR1mfy3fn9kqa9zMUflIgm7dBekGJg&s=10" alt="Generador de Contraseñas" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500"></div>
+                
+                <div class="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                    <h3 class="text-3xl font-bold text-white mb-2 tracking-tight">KeyGen Seguro</h3>
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            Herramienta para generar contraseñas seguras y aleatorias basadas en parámetros personalizables, garantizando la complejidad y criptografía básica.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs font-mono bg-white/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full backdrop-blur-md">Lógica</span>
+                            <span class="text-xs font-mono bg-white/10 text-white border border-white/20 px-3 py-1 rounded-full backdrop-blur-md">Seguridad</span>
+                        </div>
+                        <a href="https://github.com/Javierilox/Generador-de-Contrase-as" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-white hover:text-black transition-colors w-max">
+                            Ver Código <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- SCRIPT DEL MENÚ Y MODO NOCHE -->
+    <script>
+        const htmlElement = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            } else {
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            }
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const fullMenu = document.getElementById('fullMenu');
+        let menuOpen = false;
+
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                fullMenu.classList.remove('opacity-0', 'pointer-events-none');
+                fullMenu.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                fullMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                fullMenu.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+    </script>
+</body>
+</html>
